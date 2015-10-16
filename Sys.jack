@@ -35,6 +35,7 @@ class Sys {
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */
     function void error(int errorCode) {
+		do Output.printInt(errorCode);
 		Sys.halt();
     }
 }
