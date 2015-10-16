@@ -14,13 +14,27 @@ class Sys {
 
     /** Halts execution. */
     function void halt() {
+		while(1);
     }
 
     /** Waits approximately duration milliseconds and then returns. */
     function void wait(int duration) {
+
+		var int i;
+		var int j;
+		let i = 0;
+		let j = 0;
+		while(j<duration){
+			while(i<100){
+				let i = i+1;
+			}
+			let j = j+1;
+			let i = 0;
+		}
     }
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */
     function void error(int errorCode) {
+		Sys.halt();
     }
 }
