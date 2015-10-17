@@ -7,18 +7,23 @@
  * Memory operations library.
  */ 
 class Memory {
-
+	
+	var Array memory;
     /** Initializes memory parameters. */
     function void init() {
     }
 
     /** Returns the value of the main memory at the given address. */
     function int peek(int address) {
+		let Array = address;
+		return Array[0];
     }
 
     /** Sets the value of the main memory at this address
      *  to the given value. */
     function void poke(int address, int value) {
+		let Array = address;
+		let Array[0] = value;
     }
 
     /** finds and allocates from the heap a memory block of the 
