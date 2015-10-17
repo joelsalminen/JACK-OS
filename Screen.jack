@@ -9,6 +9,7 @@
 class Screen {
 
 	static Array screen;
+	let screen = Array.new(24575);
 	let screen = 16384;
     /** Initializes the Screen. */
     function void init() {
