@@ -32,7 +32,7 @@ class Screen {
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
 
-		let screen[Math.multiply(y*256)+x] = 1;
+		let screen[Math.multiply(y,256)+x] = 1;
 		return;
     }
 
@@ -43,9 +43,31 @@ class Screen {
     /** Draws a filled rectangle where the top left corner
      *  is (x1, y1) and the bottom right corner is (x2, y2). */
     function void drawRectangle(int x1, int y1, int x2, int y2) {
+		var int x;
+		var int y;
+		let x = x1;
+		let y = y1;
+		while (y<=y2){
+			while(x<=x2){
+				let screen[Math.multiply(y, 256)+x] = 1;
+				x = x + 1;
+			}
+			y = y + 1;
+			x = x1;
+		}
+		return;
     }
 
     /** Draws a filled circle of radius r around (cx, cy). */
     function void drawCircle(int cx, int cy, int r) {
     }
 }
+
+
+
+
+
+
+
+
+
