@@ -9,10 +9,10 @@
 class Screen {
 
 	static Array screen;
-
+	static int color;
     /** Initializes the Screen. */
     function void init() {
-		var int color;
+		
 		let color = 1;
 		let screen = Array.new(24575);
 		let screen = 16384;
@@ -32,7 +32,7 @@ class Screen {
     /** Sets the color to be used in further draw commands
      *  where white = false, black = true. */
     function void setColor(boolean b) {
-		if (b = true){
+		if (b){
 			let color = 1;
 		}
 		else{
@@ -60,10 +60,10 @@ class Screen {
 		var int y;
 		let x = x1;
 		let y = y1;
-		while (y<=y2){
-			while(x<=x2){
+		while (y<y2+1){
+			while(x<x2+1){
 				let screen[Math.multiply(y, 256)+x] = color;
-				 let x = x + 1;
+				let x = x + 1;
 			}
 			let y = y + 1;
 			let x = x1;
