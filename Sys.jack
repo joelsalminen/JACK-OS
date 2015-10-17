@@ -16,11 +16,14 @@ class Sys {
 		do Output.init();
 		do Screen.init();
 		do Main.main();
+		return;
     }
 
     /** Halts execution. */
     function void halt() {
-		while(1);
+		while(1){
+		}
+		return;
     }
 
     /** Waits approximately duration milliseconds and then returns. */
@@ -37,11 +40,13 @@ class Sys {
 			let j = j+1;
 			let i = 0;
 		}
+		return;
     }
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */
     function void error(int errorCode) {
 		do Output.printInt(errorCode);
 		do Sys.halt();
+		return;
     }
 }
