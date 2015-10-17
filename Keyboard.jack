@@ -33,6 +33,9 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
+		var char key;		
+		let key = Memory.poke(24576);
+		return key;
     }
 
     /**								
@@ -41,6 +44,12 @@ class Keyboard {
      * the key to the screen, and returns the value of the pressed key.
      */
     function char readChar() {
+		var char key;
+		let key = "0";
+		while (key = "0"){
+			let key = keyPressed();
+		}
+		return key;
     }
 
     /**								
