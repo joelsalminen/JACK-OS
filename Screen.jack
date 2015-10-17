@@ -31,6 +31,9 @@ class Screen {
 
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
+
+		let screen[Math.multiply(y*256)+x] = 1;
+		return;
     }
 
     /** Draws a line from (x1, y1) to (x2, y2). */
