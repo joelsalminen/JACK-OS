@@ -14,6 +14,8 @@ class String {
 
     /** De-allocates the string and frees its space. */
     method void dispose() {
+	    do Memory.deAlloc(this);
+        return;
     }
 
     /** Returns the current length of this String. */
