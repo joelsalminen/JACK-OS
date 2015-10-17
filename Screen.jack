@@ -8,12 +8,19 @@
  */
 class Screen {
 
+	static Array screen;
+	let screen = 16384;
     /** Initializes the Screen. */
     function void init() {
     }
 
     /** Erases the whole screen. */
     function void clearScreen() {
+		var int i;
+		let i = 0;
+		while (i<256*512){
+			let screen[i] = 0;
+		}
     }
 
     /** Sets the color to be used in further draw commands
