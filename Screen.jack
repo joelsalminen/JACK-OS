@@ -13,6 +13,8 @@ class Screen {
 	let screen = 16384;
     /** Initializes the Screen. */
     function void init() {
+		var int color;
+		let color = 1;
     }
 
     /** Erases the whole screen. */
@@ -27,6 +29,12 @@ class Screen {
     /** Sets the color to be used in further draw commands
      *  where white = false, black = true. */
     function void setColor(boolean b) {
+		if (b = true){
+			let color = 1;
+		}
+		else{
+			let color = 0;
+		}
     }
 
     /** Draws the (x, y) pixel. */
