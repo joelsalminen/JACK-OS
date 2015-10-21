@@ -14,7 +14,7 @@ class Screen {
     function void init() {
 		
 		let color = 1;
-		let screen = Array.new(24575);
+		let screen = Array.new(24575-16384);
 		let screen = 16384;
 		return;
     }
@@ -44,7 +44,7 @@ class Screen {
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
 
-		let screen[Math.multiply(y,256)+x] = color;
+		let screen[Math.multiply(y,32)+x] = color;
 		return;
     }
 
@@ -60,9 +60,9 @@ class Screen {
 		var int y;
 		let x = x1;
 		let y = y1;
-		while (y<y2+1){
-			while(x<x2+1){
-				let screen[Math.multiply(y, 256)+x] = color;
+		while (y<(y2+1)){
+			while(x<(x2+1)){
+				let screen[Math.multiply(y, 32)+x] = color;
 				let x = x + 1;
 			}
 			let y = y + 1;
