@@ -45,10 +45,12 @@ class Keyboard {
      */
     function char readChar() {
 		var char key;
-		let key = "0";
-		while (key = "0"){
-			let key = keyPressed();
-		}
+		let key = 0;
+		while (Keyboard.keyPressed() = 0){}
+		let key = Keyboard.keyPressed();
+		
+		while(~(Keyboard.keyPressed() = 0)){}
+		do Output.printChar(key);
 		return key;
     }
 
