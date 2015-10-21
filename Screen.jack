@@ -23,7 +23,7 @@ class Screen {
     function void clearScreen() {
 		var int i;
 		let i = 0;
-		while (i<256*512){
+		while (i<256*32){
 			let screen[i] = 0;
 		}
 		return;
