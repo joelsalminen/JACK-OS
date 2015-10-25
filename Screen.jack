@@ -97,8 +97,9 @@ class Screen {
     function void drawCircle(int cx, int cy, int r) {
 		var int dy;
 		let dy = r-r-r;
-		for (dy;dy<(r+1);dy=dy+1){
+		while (dy<(r+1)){
 			do Screen.drawLine((cx-Math.sqrt(Math.multiply(r,r)-Math.multiply(dy,dy))), (cy+dy), (cx+Math.sqrt((Math.multiply(r,r)-Math.multiply(dy,dy)))), (cy+dy));
+			let dy = dy + 1;
 		}
 		
 		return;
