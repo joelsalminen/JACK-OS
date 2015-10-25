@@ -95,10 +95,15 @@ class Screen {
 
     /** Draws a filled circle of radius r around (cx, cy). */
     function void drawCircle(int cx, int cy, int r) {
+		var int dy;
+		let dy = r-r-r;
+		for (dy;dy<(r+1);dy=dy+1){
+			do Screen.drawLine((cx-Math.sqrt(Math.multiply(r,r)-Math.multiply(dy,dy))), (cy+dy), (cx+Math.sqrt((Math.multiply(r,r)-Math.multiply(dy,dy)))), (cy+dy));
+		}
+		
 		return;
     }
 }
-
 
 
 
