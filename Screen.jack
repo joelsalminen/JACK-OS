@@ -50,6 +50,26 @@ class Screen {
 
     /** Draws a line from (x1, y1) to (x2, y2). */
     function void drawLine(int x1, int y1, int x2, int y2) {
+		var int dx;
+		var int dy;
+		var int a;
+		var int b;
+		var int adyMinusbdx;
+		let adyMinusbdx = 0;
+		let dx = x2-x1;
+		let dy = y2-y1;
+		let a = 0;
+		let b = 0;
+		
+		while ((a<(dx+1)) &(b<(dy+1))){
+			do Screen.drawPixel((x1+a),(y1+b));
+			if (Math.multiply(a, dy)<Math.multiply(b,dx)){
+				let a = a + 1;
+			}
+			else{
+				let b = b + 1;
+			}
+		}
 		return;
     }
 
