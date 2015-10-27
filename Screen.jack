@@ -43,8 +43,11 @@ class Screen {
 
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
-
-		let screen[Math.multiply(y,32)+x] = color;
+		var int address;
+		var int mask:
+		let address = (y*32) + (x/16);
+		let mask = Math.two_to_the(x & 15);
+		let screen[address] = screen[address] | mask;
 		return;
     }
 
