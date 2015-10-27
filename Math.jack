@@ -22,10 +22,32 @@ class Math {
 
     /** Returns the product of x and y. */
     function int multiply(int x, int y) {
+		var int sum;
+		var int shiftedX;
+		var int j;
+		let j = 0;
+		let sum = 0;
+		let shiftedX = 0;
+		while (){
+			while(){
+				
+			}
+		}
     }
 
     /** Returns the integer part of x/y. */
     function int divide(int x, int y) {
+		var int q;
+		if (y>x){
+			return 0;
+		}
+		let q = divide(x, y+y);
+		if((x-(Math.multiply(x,y)+Math.multiply(x,y)))<y){
+			return (q+q);
+		}
+		else{
+			return ((q+q)+1);
+		}
     }
 
     /** Returns the integer part of the square root of x. */
