@@ -8,8 +8,8 @@
  */
 class String {
 
-	static int length;
-	static Array array;
+	field int length;
+	field Array array;
     /** Constructs a new empty String with a maximum length of maxLength. */
     constructor String new(int maxLength) {
 		let length = 0;
@@ -43,6 +43,7 @@ class String {
      *  Returns this string as the return value. */
     method String appendChar(char c) {
 		let array[length] = c;
+		let length = length + 1;
 		return this;
     }
 
