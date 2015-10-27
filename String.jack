@@ -9,38 +9,40 @@
 class String {
 
 	static int length;
+	static Array array;
     /** Constructs a new empty String with a maximum length of maxLength. */
     constructor String new(int maxLength) {
 		let length = 0;
-		return Memory.alloc(maxLength);
+		let array = Array.new(maxLength);
+		return this;
     }
 
     /** De-allocates the string and frees its space. */
     method void dispose() {
-	    do Memory.deAlloc(this);
+	    do array.dispose();
         return;
     }
 
     /** Returns the current length of this String. */
     method int length() {
-		return length;		
+		return length;
     }
 
     /** Returns the character at location j. */
     method char charAt(int j) {
-		return this[j];
+		return array[j];
     }
 
     /** Sets the j'th character of this string to be c. */
     method void setCharAt(int j, char c) {
-		let this[j] = c;
+		let array[j] = c;
 		return;
     }
 
     /** Appends the character c to the end of this String.
      *  Returns this string as the return value. */
     method String appendChar(char c) {
-		let this[length] = c;
+		let array[length] = c;
 		return this;
     }
 
