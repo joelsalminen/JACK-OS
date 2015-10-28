@@ -10,6 +10,7 @@ class Keyboard {
 
     /** Initializes the keyboard. */
     function void init() {
+		return;
     } 
 
     /**
@@ -34,7 +35,7 @@ class Keyboard {
      */
     function char keyPressed() {
 		var char key;		
-		let key = Memory.poke(24576);
+		let key = Memory.peek(24576);
 		return key;
     }
 
@@ -70,7 +71,7 @@ class Keyboard {
 		while (~(key = String.newLine())){
 			if(key = 129){
 				let line = line.eraseLastChar();
-				do Output.backspace();
+				do Output.backSpace();
 			}
 			else {
 				do line.appendChar(key);
@@ -98,7 +99,7 @@ class Keyboard {
 		while (~(key = String.newLine())){
 			if(key = 129){
 				let line = line.eraseLastChar();
-				do Output.backspace();
+				do String.backSpace();
 			}
 			else {
 				do line.appendChar(key);

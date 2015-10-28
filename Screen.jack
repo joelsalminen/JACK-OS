@@ -44,7 +44,7 @@ class Screen {
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
 		var int address;
-		var int mask:
+		var int mask;
 		let address = (y*32) + (x/16);
 		let mask = Math.two_to_the(x & 15);
 		let screen[address] = screen[address] | mask;
@@ -87,7 +87,7 @@ class Screen {
 		let y = y1;
 		while (y<(y2+1)){
 			while(x<(x2+1)){
-				let screen[Math.multiply(y, 32)+x] = color;
+				do Screen.drawPixel(x,y);
 				let x = x + 1;
 			}
 			let y = y + 1;
