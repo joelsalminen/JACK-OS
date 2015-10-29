@@ -73,18 +73,22 @@ class Math {
 
     /** Returns the integer part of x/y. */
     function int divide(int x, int y) {
+		return (Math.divider(x,y));
+    }
+
+	function int divider(int x, int y){
 		var int q;
 		if (y>x){
 			return 0;
 		}
-		let q = Math.divide(x, (y+y));
+		let q = Math.divider(x, (y+y));
 		if((x-(2*q*y))<y){
 			return (q+q);
 		}
 		else{
 			return ((q+q)+1);
 		}
-    }
+	}
 
     /** Returns the integer part of the square root of x. */
     function int sqrt(int x) {
@@ -96,7 +100,7 @@ class Math {
 			if (( (y+twoToThe[j]) * (y+twoToThe[j]) )<(x-1)){
 				let y = y + twoToThe[j];
 			}
-			let y = y - 1;
+			let j = j - 1;
 		}
 		return y;
 
