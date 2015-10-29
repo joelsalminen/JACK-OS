@@ -60,10 +60,18 @@ class Screen {
 		var int adyMinusbdx;
 		let adyMinusbdx = 0;
 		let dx = x2-x1;
-		let dy = y2-y1;
+		let dy = y1-y2;
 		let a = 0;
 		let b = 0;
-		
+
+		if (y1 = y2){
+			do Screen.drawHorizontalLine(x1, x2, y1);
+			return;
+		}
+		if (x1 = x2){
+			do Screen.drawVerticalLine(x1, y1, y2);
+			return;
+		}
 		while ((a<(dx+1)) &(b<(dy+1))){
 			do Screen.drawPixel((x1+a),(y1+b));
 			if (adyMinusbdx<0){
@@ -77,6 +85,26 @@ class Screen {
 		}
 		return;
     }
+	
+	function void drawHorizontalLine(int x1, int x2, int y){
+		var int i;
+		let i = x1;
+		while(i<x2){
+			do Screen.drawPixel(i, y);
+			let i = i + 1;
+		}
+		return;
+	}
+
+
+	function void drawVerticalLine(int x, int y1, int y2){
+		var int i;
+		let i = y1;
+		while(i<y2){
+			do Screen.drawPixel(x, i);
+			let i = i + 1;
+		}
+		return;
 
     /** Draws a filled rectangle where the top left corner
      *  is (x1, y1) and the bottom right corner is (x2, y2). */
