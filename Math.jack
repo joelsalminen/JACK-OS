@@ -73,7 +73,30 @@ class Math {
 
     /** Returns the integer part of x/y. */
     function int divide(int x, int y) {
-		return (Math.divider(x,y));
+		var int nCheck;
+		var int result;
+		let result = 0;
+		let nCheck = 0;
+		if (x<0){
+			let nCheck = nCheck + 1;
+			let x = Math.abs(x);
+		}
+		if (y<0){
+			let nCheck = nCheck + 1;
+			let y = Math.abs(y);
+		}
+		/*do Output.printInt(x);
+		do Output.println();
+		do Output.printInt(y);
+		do Output.println();*/
+
+		let result = Math.divider(x,y);
+
+		if (nCheck = 1){
+			return (result-result-result);
+		}
+
+		return (result);
     }
 
 	function int divider(int x, int y){
