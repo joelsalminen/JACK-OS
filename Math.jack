@@ -44,6 +44,18 @@ class Math {
 		var int sum;
 		var int shiftedX;
 		var int j;
+		var int nCheck;
+		let nCheck = 0;
+
+		if (x<0){
+			let nCheck = nCheck + 1;
+			let x = Math.abs(x);
+		}
+		if (y<0){
+			let nCheck = nCheck + 1;
+			let y = Math.abs(y);
+		}
+
 		let j = 0;
 		let sum = 0;
 		let shiftedX = x;
@@ -54,6 +66,9 @@ class Math {
 			}
 			let shiftedX = shiftedX + shiftedX;
 			let j = j + 1;
+		}
+		if (nCheck = 1){
+			return (sum-sum-sum);
 		}
 		return sum;
     }
