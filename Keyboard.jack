@@ -34,7 +34,9 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
-		var char key;		
+		var char key;
+		/*Kurkataa, mitä muistipaikasta 24576 löytyy eli näppäimistölle 
+		varatun muistikartan osoitteesta (=painetun näppäimen arvo)*/
 		let key = Memory.peek(24576);
 		return key;
     }
@@ -47,9 +49,11 @@ class Keyboard {
     function char readChar() {
 		var char key;
 		let key = 0;
+		/*Odotetaan, että käyttäjä painaa jotakin näppäintä */
 		while (Keyboard.keyPressed() = 0){}
 		let key = Keyboard.keyPressed();
 		
+		/*Odotetaan, että käyttäjä vapautta näppäimen */
 		while(~(Keyboard.keyPressed() = 0)){}
 		do Output.printChar(key);
 		return key;
@@ -62,23 +66,20 @@ class Keyboard {
     function String readLine(String message) {
 		var String line;
 		var char key;
-		var int i;
-		let i = 1;
-		let key = 0;
 		let line = String.new(50);
 		do Output.printString(message);
 
+		/*Jatketaan whilen toistoa, kunnes käyttäjä painaa rivinvaihtomerkkiä*/
 		while (~(key = String.newLine())){
-			if(key = 129){
+			if(key = 129){ /*eli jos painettu näppäin on backspace*/
 				let line = line.eraseLastChar();
-				do Output.backSpace();
+				/*Merkin poistaminen ei toimi. Backspacen painaminen kaataa koko ohjelman*/
 			}
-			else {
+			if (~(key = 0)){
 				do line.appendChar(key);
 			}
 			let key = Keyboard.readChar();
 		}
-		do Output.printString(line);
 		return line;
     }
 
@@ -90,23 +91,20 @@ class Keyboard {
     function int readInt(String message) {
 		var String line;
 		var char key;
-		var int i;
-		let i = 1;
-		let key = 0;
 		let line = String.new(50);
 		do Output.printString(message);
 
 		while (~(key = String.newLine())){
-			if(key = 129){
+			if(key = 129){ /*eli jos painettu näppäin on backspace*/
 				let line = line.eraseLastChar();
 				do String.backSpace();
+				/*Merkin poistaminen ei toimi. Backspacen painaminen kaataa koko ohjelman*/
 			}
-			else {
+			if (~(key = 0)){
 				do line.appendChar(key);
 			}
 			let key = Keyboard.readChar();
 		}
-		do Output.printString(line);
 		return line.intValue();
     }
 }
