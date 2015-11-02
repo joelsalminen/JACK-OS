@@ -8,12 +8,13 @@
  */
 class Array {
 
-    /**  */
+    /* Varaa parametrin size verran muistia taulukkoa varten, 
+	palauttaa osoittimen taulukon alkuun */
     function Array new(int size) {
         return Memory.alloc(size);
     }
 
-    /**  */
+    /* Vapauttaa taulukolle varatun muistin */
     method void dispose() {
         do Memory.deAlloc(this);
         return;
