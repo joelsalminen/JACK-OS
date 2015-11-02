@@ -11,12 +11,14 @@ class Memory {
 	static Array memory;
     /** Initializes memory parameters. */
     function void init() {
-		let memory = 0;
+		let memory = 0; /*Laitetaan taulukko osoittamaan muistin 
+		alkuun (=muistipaikkaan 0) */
     }
 
     /** Returns the value of the main memory at the given address. */
     function int peek(int address) {
-		return memory[address];
+		return memory[address]; /*eli taulukkoa hyväksikäyttäen katsotaan, mitä löytyy muistista 	
+		tästä kohtaa*/
     }
 
     /** Sets the value of the main memory at this address
