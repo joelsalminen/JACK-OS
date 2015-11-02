@@ -8,7 +8,8 @@
  */
 class Math {
 
-	static Array twoToThe;
+	static Array twoToThe; //Taulukko, johon on talletettu 2^n, n=16 asti
+
     /** Initializes the library. */
     function void init() {
 		let twoToThe = Array.new(16);
@@ -28,13 +29,15 @@ class Math {
 		let twoToThe[13] = 8192;
 		let twoToThe[14] = 16384;
 		let twoToThe[15] = 32767;
+		/* twoToThe[15] = 2^16-1, koska 16-bittiset lukumuuttujien positiiviset arvot menevät vain 
+		tähän asti */
 		return;
     }
 
     /** Returns the absolute value of x. */
     function int abs(int x) {
 		if (x<0){
-			return x-x-x;
+			return x-x-x; /*Esim. -1-(-1)-(-1) = 1*/
 		}
 		return x;
     }
@@ -47,6 +50,10 @@ class Math {
 		var int nCheck;
 		let nCheck = 0;
 
+		/*Tarkistetaan, onko luku negatiivinen. Jos vain toinen luvuista
+		on negatiivinen, nCheck saa arvokseen 1. Jos taas molemmat tai 
+		kumpikaan ei ole negatiivinen, nCheckin != 1. Negatiiviset luvut muutetaan
+		positiivisiksi kertolaskun suorittamista varten. */
 		if (x<0){
 			let nCheck = nCheck + 1;
 			let x = Math.abs(x);
@@ -68,15 +75,21 @@ class Math {
 			let j = j + 1;
 		}
 		if (nCheck = 1){
+			/*Jos vain toinen tulon tekijöistä oli negatiivinen, muutetaan saatu tulos 
+			negatiiviseksi*/
 			return (sum-sum-sum);
 		}
 		return sum;
     }
 
+
+	/*Palauttaa 2^(n-1):n arvon*/
 	function int two_to_the(int j){
 		return twoToThe[j];
 	}
 
+
+	/*Tarkistaa, onko luvun j:s bitti 1. Käytetään avuksi kertolaskufunktiossa. */
 	function int bit(int j, int y){
 		if (~(y & twoToThe[j] = 0)){
 			return (1);
@@ -88,10 +101,18 @@ class Math {
 
     /** Returns the integer part of x/y. */
     function int divide(int x, int y) {
+		/*Tässä funktiossa tarkistetaan, onko lopullinen tulos negatiivinen
+		vai positiivinen. Itse jakolasku suoritetaan rekursiivisessa apufunktiossa
+		Math.divider() */
 		var int nCheck;
 		var int result;
 		let result = 0;
 		let nCheck = 0;
+
+		/*Tarkistetaan, onko luku negatiivinen. Jos vain toinen luvuista
+		on negatiivinen, nCheck saa arvokseen 1. Jos taas molemmat tai 
+		kumpikaan ei ole negatiivinen, nCheckin != 1. Negatiiviset luvut muutetaan
+		positiivisiksi kertolaskun suorittamista varten. */
 		if (x<0){
 			let nCheck = nCheck + 1;
 			let x = Math.abs(x);
@@ -100,20 +121,21 @@ class Math {
 			let nCheck = nCheck + 1;
 			let y = Math.abs(y);
 		}
-		/*do Output.printInt(x);
-		do Output.println();
-		do Output.printInt(y);
-		do Output.println();*/
 
 		let result = Math.divider(x,y);
 
 		if (nCheck = 1){
+			/*Jos vain toinen tulon tekijöistä oli negatiivinen, muutetaan saatu tulos 
+			negatiiviseksi*/
 			return (result-result-result);
 		}
 
 		return (result);
     }
 
+
+	/*Jakolaskufunktion apufunktio, täällä tapahtuu oikeasti 
+	jakolaskuoperaatioiden suorittaminen*/
 	function int divider(int x, int y){
 		var int q;
 		if (y>x){
@@ -132,13 +154,11 @@ class Math {
     function int sqrt(int x) {
 		var int y;
 		var int j;
-		let j = 8;
+		let j = 8; /*bittien lukumäärä jaettuna kahdella */
 		let y = 0;
 		while (j>-1){
 			if ((((y + twoToThe[j])*(y + twoToThe[j]))<(x) | (((y + twoToThe[j])*(y + twoToThe[j]))=(x))) & ((y + twoToThe[j] )*(y + twoToThe[j]))>0){
-
 				let y = y + twoToThe[j];
-
 			}
 			let j = j - 1;
 		}
