@@ -8,6 +8,7 @@
  */
 class Sys {
 
+
     /** Performs all the initializations required by the OS. */
     function void init() {
 		do Keyboard.init();
@@ -22,14 +23,16 @@ class Sys {
 
     /** Halts execution. */
     function void halt() {
-		while(1){
-		}
+		/* =ikuinen loop */
+		while(1){}
 		return;
     }
 
+
     /** Waits approximately duration milliseconds and then returns. */
     function void wait(int duration) {
-
+		/*Metodi laskee jotakin roskaa. Arvolla 1000 toimitus kestää tällä '
+		laitteella noin sekunnin*/
 		var int i;
 		var int j;
 		let i = 0;
@@ -43,6 +46,7 @@ class Sys {
 		}
 		return;
     }
+
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */
     function void error(int errorCode) {
