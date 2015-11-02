@@ -5,6 +5,10 @@
 
 /**
  * Graphic screen library.
+
+	Värin vaihtaminen ei toimi. Koska moodlessa annettu drawPixel-funktio ei toimi täydellisesti
+	ja lähestulkoon kaikki muut funktiot käyttävät sitä funktiota hyväkseen, niin mikään 
+	piirtämisfunktio ei piirrä näytölle täysin halutunlaista kuviota. 
  */
 class Screen {
 
@@ -23,7 +27,7 @@ class Screen {
     function void clearScreen() {
 		var int i;
 		let i = 0;
-		while (i<256*32){
+		while (i<256*32){ /*Käydään läpi jokainen 16 bitin rykelmä ja maalataan ne valkoiseksi */
 			let screen[i] = 0;
 		}
 		return;
@@ -32,17 +36,13 @@ class Screen {
     /** Sets the color to be used in further draw commands
      *  where white = false, black = true. */
     function void setColor(boolean b) {
-		if (b){
-			let color = 1;
-		}
-		else{
-			let color = 0;
-		}
 		return;
     }
 
     /** Draws the (x, y) pixel. */
     function void drawPixel(int x, int y) {
+		/*Tämä funktio on häpeilemätön kopio moodlessa annetusta funktiosta. Se ei kuitenkaan
+		jostakin syystä toimi täydellisesti: jos 16 bitin rykelmän viimeistä bittiä yrittää maalata 		mustaksi, niin kaikki aikaisemmat 15 bittiä syttyvät ja 16. bitti jää valkoiseksi. Tämä 		aiheuttaa ongelmia drawLine, drawCircle ja drawRectangle -funktioissa.*/ 
 		var int address;
 		var int mask;
 		let address = (y*32) + (x/16);
@@ -63,7 +63,8 @@ class Screen {
 		let dy = y1-y2;
 		let a = 0;
 		let b = 0;
-
+		/*Piirretään vaaka- ja pystyviivat erillisillä funktioilla drawHorizontalLine ja
+		drawVerticalLine */
 		if (y1 = y2){
 			do Screen.drawHorizontalLine(x1, x2, y1);
 			return;
@@ -72,6 +73,7 @@ class Screen {
 			do Screen.drawVerticalLine(x1, y1, y2);
 			return;
 		}
+		/*Vinon viivan piirtäminen */
 		while ((a<(dx+1)) &(b<(dy+1))){
 			do Screen.drawPixel((x1+a),(y1+b));
 			if (adyMinusbdx<0){
@@ -86,6 +88,8 @@ class Screen {
 		return;
     }
 	
+
+	/*Pystyviivojen piirtäminen */
 	function void drawHorizontalLine(int x1, int x2, int y){
 		var int i;
 		let i = x1;
@@ -97,6 +101,7 @@ class Screen {
 	}
 
 
+	/*Vaakaviivojen piirtäminen */
 	function void drawVerticalLine(int x, int y1, int y2){
 		var int i;
 		let i = y1;
@@ -113,6 +118,7 @@ class Screen {
 		var int y;
 		let x = x1;
 		let y = y1;
+		/* Piirretään vaakasuuntaisia viivoja annettujen parametrien rajoittamalle alueelle. */
 		while (y<(y2+1)){
 			while(x<(x2+1)){
 				do Screen.drawPixel(x,y);
@@ -126,9 +132,15 @@ class Screen {
 
     /** Draws a filled circle of radius r around (cx, cy). */
     function void drawCircle(int cx, int cy, int r) {
+		/*Tämän metodin piirtämän ympyrän oikea puolisko piirtyy täydellisesti, kun taas 
+		vasen reuna on hirvittävän näköinen palikkarykelmä. Tämä johtuu siitä, että drawPixel ei
+		toimi juuri niin kuin pitäisi, vaikka ympyrän vaakaviivojen koordinaatit onkin laskettu 
+		oikein*/
 		var int dy;
 		let dy = r-r-r;
 		while (dy<(r+1)){
+			/*Piirretään siis laskukaavan mukaan laskettuja vaakasuuntaisia viivoja, joista muodostuu 
+			ympyrä */
 			do Screen.drawLine((cx-Math.sqrt(Math.multiply(r,r)-Math.multiply(dy,dy))), (cy+dy), (cx+Math.sqrt((Math.multiply(r,r)-Math.multiply(dy,dy)))), (cy+dy));
 			let dy = dy + 1;
 		}
