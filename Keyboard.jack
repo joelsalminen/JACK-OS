@@ -3,9 +3,16 @@
 // by Nisan and Schocken, MIT Press.
 // File name: projects/12/Keyboard.jack
 
+/*
+Joel Salminen 0401495
+Timo Kortelainen 0402517
+*/
+
 /**
  * A library for handling user input from the keyboard.
  */
+
+
 class Keyboard {
 
     /** Initializes the keyboard. */
