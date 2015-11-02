@@ -7,15 +7,20 @@
  * Represents a String object. Implements the String type.
  */
 class String {
+	/*eraseLastChar(), intValue() sekä setInt() -funktioita ei toteutettu*/
 
-	field int length;
-	field Array array;
+	field int length; //merkkijonon tämänhetkinen pituus
+	field Array array; //merkkijonoa varten luotu taulukko
+
     /** Constructs a new empty String with a maximum length of maxLength. */
     constructor String new(int maxLength) {
+		/*Merkkijonoja voidaan käsitellä taulukoina. Luodaan siis uusi taulukko,
+		jonka pituus on maxLength */
 		let length = 0;
 		let array = Array.new(maxLength);
 		return this;
     }
+
 
     /** De-allocates the string and frees its space. */
     method void dispose() {
@@ -23,15 +28,18 @@ class String {
         return;
     }
 
+
     /** Returns the current length of this String. */
     method int length() {
 		return length;
     }
 
+
     /** Returns the character at location j. */
     method char charAt(int j) {
 		return array[j];
     }
+
 
     /** Sets the j'th character of this string to be c. */
     method void setCharAt(int j, char c) {
@@ -39,13 +47,16 @@ class String {
 		return;
     }
 
+
     /** Appends the character c to the end of this String.
      *  Returns this string as the return value. */
     method String appendChar(char c) {
-		let array[length] = c;
+		let array[length] = c; /*Lisää paikalle length (=merkkijonon viimeisen
+		merkin perään) muuttujan c sisältämän kirjaimen */
 		let length = length + 1;
 		return this;
     }
+
 
     /** Erases the last character from this String. */
     method void eraseLastChar() {
@@ -58,23 +69,30 @@ class String {
 		return 1;
     }
 
+
     /** Sets this String to hold a representation of the given number. */
     method void setInt(int number) {
 		return;
     }
 
+
     /** Returns the new line character. */
     function char newLine() {
+		/*Palauttaa rivinvaihtomerkin ASCII-koodin. */
 		return 128;
     }
 
+
     /** Returns the backspace character. */
     function char backSpace() {
+		/*Palauttaa kirjaimenpoistomerkin ASCII-koodin*/
 		return 129;
     }
 
+
     /** Returns the double quote (") character. */
     function char doubleQuote() {
+		/*Palauttaa tuplalainausmerkin ASCII-koodin*/
 		return 34;
     }
 }
