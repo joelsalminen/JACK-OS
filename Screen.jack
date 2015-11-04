@@ -48,6 +48,8 @@ class Screen {
     function void drawPixel(int x, int y) {
 		/*Tämä funktio on häpeilemätön kopio moodlessa annetusta funktiosta. Se ei kuitenkaan
 		jostakin syystä toimi täydellisesti: jos 16 bitin rykelmän viimeistä bittiä yrittää maalata 		mustaksi, niin kaikki aikaisemmat 15 bittiä syttyvät ja 16. bitti jää valkoiseksi. Tämä 		aiheuttaa ongelmia drawLine, drawCircle ja drawRectangle -funktioissa.*/ 
+
+		/*Vaihtoehtoisesti vika saattaa olla myös kahden potenssin taulukossa */
 		var int address;
 		var int mask;
 		let address = (y*32) + (x/16);
@@ -79,6 +81,10 @@ class Screen {
 			return;
 		}
 		/*Vinon viivan piirtäminen */
+
+		/*Tähän kohtaan tulee jotakin, jolla tarkistetaan, onko suora nouseva vai laskeva.
+		Jos suora on laskeva eli y2<y1, niin dy:n arvoa vähennetään joka kierroksella yhdellä
+		kasvattamisen sijasta*/
 		while ((a<(dx+1)) &(b<(dy+1))){
 			do Screen.drawPixel((x1+a),(y1+b));
 			if (adyMinusbdx<0){
@@ -115,6 +121,7 @@ class Screen {
 			let i = i + 1;
 		}
 		return;
+	}
 
     /** Draws a filled rectangle where the top left corner
      *  is (x1, y1) and the bottom right corner is (x2, y2). */
